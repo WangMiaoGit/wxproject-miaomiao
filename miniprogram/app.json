@@ -3,7 +3,16 @@
     "pages/index/index",
     "pages/near/near",
     "pages/message/message",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/editUserInfo/editUserInfo",
+    "pages/friendList/friendList",
+    "pages/detail/detail",
+    "pages/editUserInfo/editItem/head",
+    "pages/editUserInfo/editItem/name",
+    "pages/editUserInfo/editItem/siginature",
+    "pages/editUserInfo/editItem/location",
+    "pages/editUserInfo/editItem/phone",
+    "pages/editUserInfo/editItem/weixin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -17,30 +26,32 @@
     "selectedColor": "#1296db",
     "borderStyle": "black",
     "backgroundColor": "#937bf5",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "./images/tabbar/home.png",
-      "selectedIconPath": "./images/tabbar/home_selected.png"
-    },
-    {
-      "pagePath": "pages/near/near",
-      "text": "附近",
-      "iconPath": "./images/tabbar/near.png",
-      "selectedIconPath": "./images/tabbar/near_selected.png"
-    },
-    {
-      "pagePath": "pages/message/message",
-      "text": "消息",
-      "iconPath": "./images/tabbar/message.png",
-      "selectedIconPath": "./images/tabbar/message_selected.png"
-    },
-    {
-      "pagePath": "pages/user/user",
-      "text": "我",
-      "iconPath": "./images/tabbar/me.png",
-      "selectedIconPath": "./images/tabbar/me_selected.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/tabbar/home.png",
+        "selectedIconPath": "./images/tabbar/home_selected.png"
+      },
+      {
+        "pagePath": "pages/near/near",
+        "text": "附近",
+        "iconPath": "./images/tabbar/near.png",
+        "selectedIconPath": "./images/tabbar/near_selected.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "./images/tabbar/message.png",
+        "selectedIconPath": "./images/tabbar/message_selected.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我",
+        "iconPath": "./images/tabbar/me.png",
+        "selectedIconPath": "./images/tabbar/me_selected.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

@@ -10,7 +10,8 @@ Page({
   data: {
     userPhoto: "../../images/tabbar/me_selected.png",
     nickName: "用户名",
-    isLogin: false
+    isLogin: false,
+    disabled: true
   },
 
   bindGetUserInfo(msg) {
@@ -40,7 +41,8 @@ Page({
               phoneNumber: '',
               weixinNumber: '',
               links: 0,
-              time: new Date()
+              time: new Date(),
+              isLocation:true
             }
           }).then((res) => {
             db.collection('users').doc(res._id).get().then((res) => {
@@ -120,29 +122,41 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {}
+    }).then((res) => {
+      // console.log(res)
+      db.collection('users').where({
+        _openid: res.result.openid
+      }).get().then((res) => {
 
+        if (res.data.length > 0) {
+          app.userInfo = Object.assign(app.userInfo, res.data[0]);
+          console.log(res.data[0].nickName)
+          console.log(app.userInfo)
+          this.setData({
+            userPhoto: app.userInfo.userPhoto,
+            nickName: app.userInfo.nickName,
+            isLogin: true
+          });
+        } else {
+          this.setData({
+            disabled: false
+          })
+        }
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {}
-    }).then((res) => {
-      console.log(res)
-        // db.collection('users').where({
-        //   _openid:res.result.openid
-        // }).get().then(()=>{
-        //   app.userInfo = Object.assign(app.userInfo,res.data);
-        //   this.setData({
-        //       userPhoto:app.userInfo.userPhoto,
-        //       nickName:app.userInfo.nickName,
-        //       isLogin:true
-        //   });
-        // })
-    })
+      this.setData({
+        nickName:app.userInfo.nickName
+      })
   },
 
   /**

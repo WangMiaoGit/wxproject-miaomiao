@@ -37,3 +37,16 @@
 .user-info button :last-child{
  color: red;
 }
+
+.user-list{
+  margin-top: 40rpx;
+}
+
+.user-list-item{
+  height: 50rpx;
+  border-bottom: 1px dashed #b4b5b6 ;
+  padding: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

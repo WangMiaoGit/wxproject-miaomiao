@@ -3,9 +3,30 @@
 	<view class="user-info">
 		<image src="{{userPhoto}}"></image>
 		<text wx:if="{{isLogin}}">{{nickName}}</text>
-		<button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+		<button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" disabled="{{disabled}}">
 			微信登录</button>
 		<button wx:if="{{isLogin}}" bindtap="loginOut">退出登陆</button>
-    
+	</view>
+
+	<view wx:if="{{isLogin}}" class="user-list">
+		<navigator url="../editUserInfo/editUserInfo" open-type="navigate">
+			<view class="user-list-item">
+				<text>编辑个人信息</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+		<navigator url="../friendList/friendList" open-type="navigate">
+			<view class="user-list-item">
+				<text>查看好友列表</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+		<navigator url="../detail/detail" open-type="navigate">
+			<view class="user-list-item">
+				<text>个人主页</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+		
 	</view>
 </view>

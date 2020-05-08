@@ -1,0 +1,8 @@
+/* miniprogram/pages/editUserInfo/editItem/name.wxss */
+input{
+  border: 1px solid #b4b5b6;
+}
+
+button{
+  width: 100%;
+}

@@ -44,9 +44,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "pages/user/user",
+					"id": 1,
+					"name": "pages/",
 					"pathName": "pages/user/user",
+					"query": "",
 					"scene": null
 				}
 			]
