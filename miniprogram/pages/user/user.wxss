@@ -1,0 +1,39 @@
+/* pages/user/user.wxss */
+.user{
+  display: flex;
+  align-items: center;
+}
+
+.user-info{
+  height: 150rpx;
+  border:1px solid #b4b5b6;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  align-items: center;
+}
+
+.user-info image{
+  
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+
+.user-info text{
+  margin-left: 20rpx;
+}
+
+.user-info button{
+  width: 150rpx;
+  padding-left: 0;
+  padding-right: 0;
+  margin:0;
+  margin-left: 10rpx;
+}
+
+.user-info button :last-child{
+ color: red;
+}

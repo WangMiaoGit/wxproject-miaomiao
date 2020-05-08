@@ -1,0 +1,60 @@
+<view class="index">
+	<swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular>
+		<block wx:for="{{imageUrls}}" wx:key="index">
+			<swiper-item>
+				<image src="{{item}}" ></image>
+			</swiper-item>
+		</block>
+	</swiper>
+
+	<view class="index-tab">
+		<view class="active">推荐</view>
+		<view>最新</view>
+	</view>
+
+	<view class="index-list" wx:if='{{true}}'>
+		<view class="index-list-item">
+			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
+			<view class="index-list-text">
+        <text>xiaomiaomiao</text>
+			  <text>
+			    <text class="iconfont icondianzan"></text>
+			    <text>100</text>
+			  </text>
+			</view>
+		</view>
+
+		<view class="index-list-item">
+			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
+      <view class="index-list-text">
+        <text>xiaomiaomiao</text>
+			  <text>
+			    <text class="iconfont icondianzan"></text>
+			    <text>100</text>
+			  </text>
+			</view>
+		</view>
+
+		<view class="index-list-item">
+			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
+      <view class="index-list-text">
+        <text>xiaomiaomiao</text>
+			  <text>
+			    <text class="iconfont icondianzan"></text>
+			    <text>100</text>
+			  </text>
+			</view>
+		</view>
+
+		<view class="index-list-item">
+			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
+      <view class="index-list-text">
+        <text>xiaomiaomiao</text>
+			  <text>
+			    <text class="iconfont icondianzan"></text>
+			    <text>100</text>
+			  </text>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,11 @@
+<!--pages/user/user.wxml-->
+<view class="uesr">
+	<view class="user-info">
+		<image src="{{userPhoto}}"></image>
+		<text wx:if="{{isLogin}}">{{nickName}}</text>
+		<button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			微信登录</button>
+		<button wx:if="{{isLogin}}" bindtap="loginOut">退出登陆</button>
+    
+	</view>
+</view>
