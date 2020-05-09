@@ -42,7 +42,7 @@ Page({
               weixinNumber: '',
               links: 0,
               time: new Date(),
-              isLocation:true
+              isLocation: true
             }
           }).then((res) => {
             db.collection('users').doc(res._id).get().then((res) => {
@@ -134,8 +134,8 @@ Page({
 
         if (res.data.length > 0) {
           app.userInfo = Object.assign(app.userInfo, res.data[0]);
-          console.log(res.data[0].nickName)
-          console.log(app.userInfo)
+          // console.log(res.data[0].nickName)
+          // console.log(app.userInfo)
           this.setData({
             userPhoto: app.userInfo.userPhoto,
             nickName: app.userInfo.nickName,
@@ -154,9 +154,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.userInfo)
+
+    if (app.userInfo != {}) {
       this.setData({
-        nickName:app.userInfo.nickName
+        nickName: app.userInfo.nickName,
+        userPhoto: app.userInfo.userPhoto
       })
+    }
+
+
+
   },
 
   /**

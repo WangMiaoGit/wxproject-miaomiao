@@ -1,0 +1,4 @@
+/* components/copyText/copyText.wxss */
+text{
+  margin-left: 10rpx;
+}

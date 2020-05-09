@@ -1,0 +1,4 @@
+<!--components/callPhone/callPhone.wxml-->
+<!-- 组件样式只在  组件wxss生效 iconfont 是在全局 app.wxss中 -->
+<text bindtap="handleCallPhone" class="iconfont icondadianhua"></text>
+

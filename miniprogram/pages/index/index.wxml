@@ -1,3 +1,8 @@
+<!-- 模块化  只能在逻辑中引入  .js -->
+<!-- wxs 可以在视图中使用  .wxml -->
+<wxs src="../../common/wordSplit.wxs" module='m1' />
+<wxs src="../../common/unitFormat.wxs" module = 'm2'/>
+
 <view class="index">
 	<swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular>
 		<block wx:for="{{imageUrls}}" wx:key="index">
@@ -8,51 +13,20 @@
 	</swiper>
 
 	<view class="index-tab">
-		<view class="active">推荐</view>
-		<view>最新</view>
+		<view class="{{current == 'links'?'active':''}}" data-current="links" bindtap='handleCurrent'>推荐</view>
+		<view class="{{current == 'time'?'active':''}}" data-current="time" bindtap='handleCurrent'>最新</view>
 	</view>
 
 	<view class="index-list" wx:if='{{true}}'>
-		<view class="index-list-item">
-			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
+		<view class="index-list-item" wx:for="{{listData}}" wx:key="idex">
+			<image src="{{item.userPhoto}}" mode="aspecfFill" bindtap="handleDetail" data-id="{{item._id}}"></image>
 			<view class="index-list-text">
-        <text>xiaomiaomiao</text>
-			  <text>
-			    <text class="iconfont icondianzan"></text>
-			    <text>100</text>
-			  </text>
-			</view>
-		</view>
-
-		<view class="index-list-item">
-			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
-      <view class="index-list-text">
-        <text>xiaomiaomiao</text>
-			  <text>
-			    <text class="iconfont icondianzan"></text>
-			    <text>100</text>
-			  </text>
-			</view>
-		</view>
-
-		<view class="index-list-item">
-			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
-      <view class="index-list-text">
-        <text>xiaomiaomiao</text>
-			  <text>
-			    <text class="iconfont icondianzan"></text>
-			    <text>100</text>
-			  </text>
-			</view>
-		</view>
-
-		<view class="index-list-item">
-			<image src="/images/demo01.jpg" mode="aspecfFill"></image>
-      <view class="index-list-text">
-        <text>xiaomiaomiao</text>
-			  <text>
-			    <text class="iconfont icondianzan"></text>
-			    <text>100</text>
+			<!-- wxs  生成当model  -->
+        <text>{{m1.wordSplit(item.nickName)}}</text>
+			  <text data-id="{{item._id}}" bindtap="handleLinks">
+				<!-- data-id="{{item._id}} 自定义属性  id -->
+			    <text  class="iconfont icondianzan" ></text>
+			    <text>{{m2.unitFormat(item.links)}}</text>
 			  </text>
 			</view>
 		</view>

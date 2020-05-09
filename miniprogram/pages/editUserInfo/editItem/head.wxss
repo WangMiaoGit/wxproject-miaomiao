@@ -1,1 +1,23 @@
 /* miniprogram/pages/editUserInfo/head.wxss */
+.head {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.head button {
+  margin: 10rpx;
+  border: 1px solid #b4b5b6;
+  background-color: #b4b5b6;
+}
+
+
+
+.head image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+}

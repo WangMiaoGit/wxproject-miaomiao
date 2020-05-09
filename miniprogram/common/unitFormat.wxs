@@ -1,0 +1,8 @@
+var unitFormat = function(number){
+  if(number >=1000){
+    //除以1000 取一位小数 
+    number = (number/1000).toFixed(1)+"k"
+  }
+  return number
+};
+ module.exports.unitFormat = unitFormat;

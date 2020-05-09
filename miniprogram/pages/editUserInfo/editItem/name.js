@@ -15,6 +15,8 @@ Page({
     let userInfo = msg.detail.userInfo;
     this.setData({
       nickName: userInfo.nickName,
+    },()=>{
+      this.updateNickName();
     })
   },
 
