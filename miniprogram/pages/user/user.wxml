@@ -1,4 +1,8 @@
 <!--pages/user/user.wxml-->
+<page-meta root-font-size="12px"></page-meta>
+<view class="bg">
+  <image mode="widthFix" src="../../images/bg.png"></image>
+</view>
 <view class="uesr">
 	<view class="user-info">
 		<image src="{{userPhoto}}"></image>
@@ -21,7 +25,7 @@
 				<text class="iconfont iconyoujiantou"></text>
 			</view>
 		</navigator>
-		<navigator url="../detail/detail" open-type="navigate">
+		<navigator url="{{'../detail/detail?userId=' + id}}" open-type="navigate">
 			<view class="user-list-item">
 				<text>个人主页</text>
 				<text class="iconfont iconyoujiantou"></text>

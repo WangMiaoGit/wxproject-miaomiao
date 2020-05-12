@@ -45,9 +45,15 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/detail/detail",
-					"pathName": "pages/detail/detail",
-					"query": "userId=5e847ab25eb50f5b0060a4cc79bfc4a5",
+					"name": "pages/user/user",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message/message",
+					"pathName": "pages/message/message",
 					"scene": null
 				}
 			]

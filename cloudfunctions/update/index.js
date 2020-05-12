@@ -10,19 +10,35 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+
+  console.log(event.data);
   try {
 
-    if(typeof event.data=='string'){
+    if (typeof event.data == 'string') {
       // 当前端传过来当是字符串 进行解析 成数据库对象
-      event.data = eval('('+event.data+')');
+      event.data = eval('(' + event.data + ')');
+    }
+  
+    if (event.doc) {
+      return await db.collection(event.collection)
+        .doc(event.doc)
+        .update({
+          data: {
+            ...event.data
+          }
+        })
+    } else {
+
+      return await db.collection(event.collection)
+        .where({ ...event.where })
+        .update({
+          data: {
+            ...event.data
+          }
+        })
     }
 
-    return await db.collection(event.collection).doc(event.doc)
-    .update({
-      data:{
-        ...event.data
-      }
-    })
+
   } catch (e) {
     console.error(e)
   }

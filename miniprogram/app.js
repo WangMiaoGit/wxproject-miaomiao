@@ -19,5 +19,6 @@ App({
     this.globalData = {}
     //创建全局对象
     this.userInfo={}
+    this.userMessage=[]
   }
 })

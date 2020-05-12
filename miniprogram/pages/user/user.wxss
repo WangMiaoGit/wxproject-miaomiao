@@ -1,7 +1,23 @@
 /* pages/user/user.wxss */
+.bg{
+  /* background-color: #96D7ED; */
+  position: absolute;
+  left:0;
+  right: 0;
+  top: 0;
+  text-align: right;
+  height: var(--size205);
+  z-index: -1;
+}
+.bg image {
+  width: 100%;
+}
+
 .user{
   display: flex;
   align-items: center;
+
+ 
 }
 
 .user-info{
@@ -11,6 +27,7 @@
   border-right: none;
   display: flex;
   align-items: center;
+  margin-top:200rpx;
 }
 
 .user-info image{

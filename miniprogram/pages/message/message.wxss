@@ -1,1 +1,8 @@
 /* pages/message/message.wxss */
+.message{
+  padding:10rpx
+}
+
+.message-text{
+  margin:30rpx;
+}

@@ -1,7 +1,10 @@
 <!--pages/detail/detail.wxml-->
 <view class="detail">
-	<button wx:if="{{isFriend}}">已是好友</button>
-	<button wx:else>添加好友</button>
+	<block wx:if="{{isHidden}}">
+		<button wx:if="{{isFriend}}" disabled="{{isFriend}}">已是好友</button>
+		<button wx:else bindtap="handleAddFriend">添加好友</button>
+	</block>
+
 
 	<view class="detail-item">
 		<text>昵称: </text>
@@ -16,14 +19,21 @@
 		<text>{{detail.signature}}</text>
 	</view>
 
-	<view wx:if='{{isFriend}}' class="detail-item">
+	<view class="detail-item">
 		<text>手机号: </text>
-		<text>{{detail.phoneNumber}}</text>
-		<call-phone  phoneNubmer='{{detail.phoneNumber}}'/>
+		<block wx:if='{{isFriend}}'>
+			<text >{{detail.phoneNumber}}</text>
+			<call-phone phoneNubmer='{{detail.phoneNumber}}' />
+		</block>
+		<text wx:else class="detial-tips">添加好友可见</text>
+
 	</view>
-	<view wx:if='{{isFriend}}' class="detail-item">
+	<view class="detail-item">
 		<text>微信号: </text>
-		<text>{{detail.weixinNumber}}</text>
-    <copy-text copyText='{{detail.weixinNumber}}'/>
+		<block wx:if='{{isFriend}}'>
+			<text >{{detail.weixinNumber}}</text>
+			<copy-text copyText='{{detail.weixinNumber}}' />
+		</block>
+		<text wx:else class="detial-tips">添加好友可见</text>
 	</view>
 </view>

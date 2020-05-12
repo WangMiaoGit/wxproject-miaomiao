@@ -15,3 +15,8 @@
   margin-left: 10rpx;
 }
 
+.detail-item .detial-tips{
+  font-size: 12;
+  color: #b4b5b6;
+}
+

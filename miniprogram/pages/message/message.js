@@ -1,11 +1,27 @@
 // pages/message/message.js
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userMessage:[],
+    isLogin:false
+  },
 
+  // 子父通信
+  onMyevent(ev){
+    console.log(ev.detail);
+    this.setData({
+      userMessage:[]
+    },()=>{
+      this.setData({
+        userMessage:ev.detail
+      })
+    })
   },
 
   /**
@@ -26,7 +42,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      if(app.userInfo._id){
+          this.setData({
+            isLogin:true,
+            userMessage :app.userMessage
+          })
+      }else{
+        wx.showToast({
+          title: '请先登陆',
+          duration: 2000,
+          icon: 'none',
+          success: () => {
+            setTimeout(() => {
+              wx.switchTab({
+                url: '../user/user',
+              })
+            }, 2000)
+          }
+        })
+      }
   },
 
   /**

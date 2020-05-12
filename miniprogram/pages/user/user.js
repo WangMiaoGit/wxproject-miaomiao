@@ -11,7 +11,8 @@ Page({
     userPhoto: "../../images/tabbar/me_selected.png",
     nickName: "用户名",
     isLogin: false,
-    disabled: true
+    disabled: true,
+    id: ''
   },
 
   bindGetUserInfo(msg) {
@@ -42,7 +43,8 @@ Page({
               weixinNumber: '',
               links: 0,
               time: new Date(),
-              isLocation: true
+              isLocation: true,
+              friendList: []
             }
           }).then((res) => {
             db.collection('users').doc(res._id).get().then((res) => {
@@ -52,7 +54,8 @@ Page({
               this.setData({
                 userPhoto: userInfo.avatarUrl,
                 nickName: userInfo.nickName,
-                isLogin: true
+                isLogin: true,
+                id: app.userInfo._id
               })
             })
           });
@@ -89,6 +92,33 @@ Page({
       userPhoto: "../../images/tabbar/me_selected.png",
       nickName: "用户名",
       isLogin: false
+    })
+  },
+
+  getMessage() {
+    db.collection('message').where({
+      userId: app.userInfo._id
+    }).watch({
+      onChange: function (snapshot) {
+        // console.log(snapshot);
+        if (snapshot.docChanges.length) {
+          let list = snapshot.docChanges[0].doc.list;
+          if (list.length) {
+            wx.showTabBarRedDot({
+              index: 2,
+            });
+            app.userMessage = list;
+          } else {
+            wx.hideTabBarRedDot({
+              index: 2,
+            });
+            app.userMessage = [];
+          }
+        }
+      },
+      onError: function (err) {
+        console.err(err)
+      }
     })
   },
 
@@ -139,8 +169,12 @@ Page({
           this.setData({
             userPhoto: app.userInfo.userPhoto,
             nickName: app.userInfo.nickName,
-            isLogin: true
+            isLogin: true,
+            id: app.userInfo._id
           });
+          console.log('app.userInfo-----onReady:' + app.userInfo._id)
+          // 监听数据  增加小红点
+          this.getMessage();
         } else {
           this.setData({
             disabled: false
@@ -154,12 +188,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.userInfo)
+    console.log('app.userInfo:' + app.userInfo._id)
 
     if (app.userInfo != {}) {
       this.setData({
         nickName: app.userInfo.nickName,
-        userPhoto: app.userInfo.userPhoto
+        userPhoto: app.userInfo.userPhoto,
+        id: app.userInfo._id
       })
     }
 

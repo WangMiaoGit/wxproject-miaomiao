@@ -1,0 +1,50 @@
+/* components/removeList2/removelist2.wxss */
+/* components/removeList/removeList.wxss */
+.area {
+  width: calc(100% - 40rpx);
+  height: 100rpx;
+  margin: 20rpx;
+  position: relative;
+  border-bottom: 1rpx solid #b4b5b6;
+
+  /* 超出边界不显示 */
+  overflow: hidden;
+}
+
+.view {
+  width: calc(100% + 100rpx);
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.view-text{
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 120rpx;
+    top: 0;
+    line-height: 100rpx;
+    align-content: center;
+}
+
+.delete {
+  width: 100rpx;
+  height: 100%;
+  background: red;
+  color: white;
+  position: absolute;
+  text-align: center;
+  line-height: 100rpx;
+  right: 0;
+  top: 0;
+}
