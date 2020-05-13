@@ -34,7 +34,7 @@ Page({
     })
 
     // 零时图片路径 加时间戳 和  随机数解决  缓存问题
-    let cloudPath = "userPhoto/" + app.userInfo._openid + Date.now() + "jpg";
+    let cloudPath = "userPhoto/" + app.userInfo._openid + Date.now() + ".png";
     wx.cloud.uploadFile({
       cloudPath: cloudPath,
       filePath: this.data.userPhoto, // 文件路径

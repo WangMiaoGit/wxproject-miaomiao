@@ -1,6 +1,7 @@
 // pages/user/user.js
 const db = wx.cloud.database()
 const app = getApp()
+const _=db.command
 
 Page({
 
@@ -12,9 +13,26 @@ Page({
     nickName: "用户名",
     isLogin: false,
     disabled: true,
-    id: ''
+    id: '',
+    latitude: 0,
+    longitude: 0
   },
 
+  getLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        const latitude = res.latitude;
+        const longitude = res.longitude;
+        console.log("latitude:"+latitude);
+        console.log("longitude:"+longitude);
+        this.data.latitude = latitude;
+        this.data.longitude = longitude
+      }
+    })
+  },
+
+  //第一次授权拿到 用户信息  后面自动登录
   bindGetUserInfo(msg) {
     console.log(msg.detail.userInfo);
     let userInfo = msg.detail.userInfo;
@@ -44,6 +62,9 @@ Page({
               links: 0,
               time: new Date(),
               isLocation: true,
+              longitude: this.longitude,
+              latitude: this.latitude,
+              location:db.Geo.Point(this.longitude,this.latitude),
               friendList: []
             }
           }).then((res) => {
@@ -117,7 +138,7 @@ Page({
         }
       },
       onError: function (err) {
-        console.err(err)
+        console.error(err)
       }
     })
   },
@@ -152,6 +173,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
+    this.getLocation()
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',

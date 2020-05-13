@@ -3,7 +3,9 @@
 <wxs src="../../common/wordSplit.wxs" module='m1' />
 <wxs src="../../common/unitFormat.wxs" module = 'm2'/>
 
+
 <view class="index">
+<search/>
 	<swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular>
 		<block wx:for="{{imageUrls}}" wx:key="index">
 			<swiper-item>

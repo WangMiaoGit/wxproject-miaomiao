@@ -2,10 +2,11 @@
 
 
 .index-swiper {
-  margin: 20rpx;
+
   height: 300rpx;
   border-radius: 10rpx;
   overflow: hidden;
+  margin: 100rpx 20rpx 20rpx 20rpx;
 }
 
 .index-swiper image {
