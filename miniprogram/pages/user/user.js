@@ -116,6 +116,13 @@ Page({
     })
   },
 
+  cancel(){
+    console.log('点击了取消')
+  },
+  confirm(){
+    console.log('点击了确定')
+  },
+
   getMessage() {
     db.collection('message').where({
       userId: app.userInfo._id

@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 <page-meta root-font-size="12px"></page-meta>
 <view class="bg">
-  <image mode="widthFix" src="../../images/bg.png"></image>
+	<image mode="widthFix" src="../../images/bg.png"></image>
 </view>
 <view class="uesr">
 	<view class="user-info">
@@ -31,6 +31,7 @@
 				<text class="iconfont iconyoujiantou"></text>
 			</view>
 		</navigator>
-		
 	</view>
+
+	
 </view>
