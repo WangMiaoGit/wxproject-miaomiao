@@ -1,7 +1,7 @@
 // pages/user/user.js
 const db = wx.cloud.database()
 const app = getApp()
-const _=db.command
+const _ = db.command
 
 Page({
 
@@ -15,7 +15,26 @@ Page({
     disabled: true,
     id: '',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    slideButtons: [{
+      text: '普通',
+      src: '/page/weui/cell/icon_love.svg', // icon的路径
+    },
+    // {
+    //   text: '普通',
+    //   extClass: 'test',
+    //     src: '/page/weui/cell/icon_star.svg', // icon的路径
+    // },
+    {
+      type: 'warn',
+      text: '警示',
+      extClass: 'test',
+      src: '/page/weui/cell/icon_del.svg', // icon的路径
+    }],
+  },
+
+  slideButtonTap(e) {
+    console.log('slide button tap', e.detail)
   },
 
   getLocation() {
@@ -24,8 +43,8 @@ Page({
       success: (res) => {
         const latitude = res.latitude;
         const longitude = res.longitude;
-        console.log("latitude:"+latitude);
-        console.log("longitude:"+longitude);
+        console.log("latitude:" + latitude);
+        console.log("longitude:" + longitude);
         this.data.latitude = latitude;
         this.data.longitude = longitude
       }
@@ -64,7 +83,7 @@ Page({
               isLocation: true,
               longitude: this.longitude,
               latitude: this.latitude,
-              location:db.Geo.Point(this.longitude,this.latitude),
+              location: db.Geo.Point(this.longitude, this.latitude),
               friendList: []
             }
           }).then((res) => {
@@ -116,10 +135,10 @@ Page({
     })
   },
 
-  cancel(){
+  cancel() {
     console.log('点击了取消')
   },
-  confirm(){
+  confirm() {
     console.log('点击了确定')
   },
 

@@ -67,3 +67,8 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.stick{
+  position: sticky;
+  top: 0;
+}

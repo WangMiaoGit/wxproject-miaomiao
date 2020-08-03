@@ -1,37 +1,56 @@
 <!--pages/user/user.wxml-->
 <page-meta root-font-size="12px"></page-meta>
-<view class="bg">
-	<image mode="widthFix" src="../../images/bg.png"></image>
-</view>
-<view class="uesr">
-	<view class="user-info">
-		<image src="{{userPhoto}}"></image>
-		<text wx:if="{{isLogin}}">{{nickName}}</text>
-		<button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" disabled="{{disabled}}">
-			微信登录</button>
-		<button wx:if="{{isLogin}}" bindtap="loginOut">退出登陆</button>
+<view data-weui-theme="dark">
+	<view class="bg">
+		<image mode="widthFix" src="../../images/bg.png"></image>
 	</view>
+	<view class="uesr">
+		<view class="user-info">
+			<image src="{{userPhoto}}"></image>
+			<text wx:if="{{isLogin}}">{{nickName}}</text>
+			<button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" disabled="{{disabled}}">
+				微信登录</button>
+			<button wx:if="{{isLogin}}" bindtap="loginOut">退出登陆</button>
+		</view>
 
-	<view wx:if="{{isLogin}}" class="user-list">
-		<navigator url="../editUserInfo/editUserInfo" open-type="navigate">
-			<view class="user-list-item">
-				<text>编辑个人信息</text>
-				<text class="iconfont iconyoujiantou"></text>
+		<view wx:if="{{isLogin}}" class="user-list">
+			<navigator url="../editUserInfo/editUserInfo" open-type="navigate">
+				<view class="user-list-item">
+					<text>编辑个人信息</text>
+					<text class="iconfont iconyoujiantou"></text>
+				</view>
+			</navigator>
+			<navigator url="../friendList/friendList" open-type="navigate">
+				<view class="user-list-item">
+					<text>查看好友列表</text>
+					<text class="iconfont iconyoujiantou"></text>
+				</view>
+			</navigator>
+			<navigator url="{{'../detail/detail?userId=' + id}}" open-type="navigate">
+				<view class="user-list-item">
+					<text>个人主页</text>
+					<text class="iconfont iconyoujiantou"></text>
+				</view>
+			</navigator>
+
+			<view class="stick">
+				<mp-cells ext-class="my-cells" title="带说明的列表项">
+					<mp-cell value="标题文字" footer="说明文字"></mp-cell>
+					<mp-cell>
+						<view>标题文字（使用slot）</view>
+						<view slot="footer">说明文字</view>
+					</mp-cell>
+					<mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+						<mp-cell value="左滑可以删除" footer="说明文字"></mp-cell>
+					</mp-slideview>
+				</mp-cells>
 			</view>
-		</navigator>
-		<navigator url="../friendList/friendList" open-type="navigate">
-			<view class="user-list-item">
-				<text>查看好友列表</text>
-				<text class="iconfont iconyoujiantou"></text>
-			</view>
-		</navigator>
-		<navigator url="{{'../detail/detail?userId=' + id}}" open-type="navigate">
-			<view class="user-list-item">
-				<text>个人主页</text>
-				<text class="iconfont iconyoujiantou"></text>
-			</view>
-		</navigator>
+
+			<!-- <mp-dialog title="test" show="{{true}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+			<view>test content</view>
+		</mp-dialog> -->
+		</view>
+
+
 	</view>
-
-	
 </view>
